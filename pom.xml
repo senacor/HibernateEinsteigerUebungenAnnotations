@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.senacor.schulung.hibernate.annot</groupId>
+    <artifactId>annotationuebungen</artifactId>
+    <name>Hibernate Schulung Uebungen Annotations - Parent</name>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>Teil1Annot</module>
+        <module>Teil1AnnotLoesung</module>
+        <module>Teil2Annot</module>
+        <module>Teil2AnnotLoesung</module>
+        <module>Teil3Annot</module>
+        <module>Teil3AnnotLoesung</module>
+        <module>Teil4Annot</module>
+        <module>Teil4AnnotLoesung</module>
+        <module>Teil5Annot</module>
+        <module>Teil5AnnotLoesung</module>
+    </modules>
+
+	<repositories>
+	    <repository>
+	      <id>jboss-public-repository-group</id>
+	      <name>JBoss Public Repository Group</name>
+	      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+	      <layout>default</layout>
+	      <releases>
+	        <enabled>true</enabled>
+	        <updatePolicy>never</updatePolicy>
+	      </releases>
+	      <snapshots>
+	        <enabled>true</enabled>
+	        <updatePolicy>never</updatePolicy>
+	      </snapshots>
+	    </repository>
+    </repositories>
+    <dependencies>
+
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>3.6.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.1.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.9.0.GA</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+
+        <dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.8</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <filtering>false</filtering>
+                <directory>src/test/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
