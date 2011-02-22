@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ZAHLUNGSARTEN_CLASS_HIERARCHY")
+// TODO Vererbungshierarchie mit Table per Class Hierarchy mappen
 public abstract class ZahlungsartClassHierarchy implements Zahlungsart {
 
     @Id

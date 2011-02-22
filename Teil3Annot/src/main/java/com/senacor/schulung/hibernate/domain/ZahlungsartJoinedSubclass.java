@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ZAHLUNGSARTEN")
+// TODO Vererbungshierarchie mit Joined Subclass mappen
 public abstract class ZahlungsartJoinedSubclass implements Zahlungsart {
 
     @Id

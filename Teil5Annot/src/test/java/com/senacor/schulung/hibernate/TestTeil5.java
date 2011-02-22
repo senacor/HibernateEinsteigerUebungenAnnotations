@@ -42,7 +42,7 @@ public class TestTeil5 extends DBTestCase {
     public void testInnerJoin() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
-
+        //TODO hier eine HQL und eine Criteria Query schreiben, die nur Benutzer mit Fotos ausgibt (Tip: Inner Join)
         t.commit();
     }
 
@@ -50,7 +50,7 @@ public class TestTeil5 extends DBTestCase {
     public void testGroupBy() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
-        
+        //TODO hier eine HQL und eine Criteria Query schreiben, die zählt in welchen Städten wie viele Benutzer wohnen
         t.commit();
     }
 

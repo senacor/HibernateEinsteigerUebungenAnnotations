@@ -42,6 +42,7 @@ public class TestTeil4 extends DBTestCase {
     public void testProvokeNonUniqueObjectException() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
+        //TODO Hier Code schreiben, der eine NonUniqueObjectException provoziert
         t.commit();
 
     }
@@ -50,6 +51,7 @@ public class TestTeil4 extends DBTestCase {
     public void testAvoidNonUniqueObjectException() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
+        //TODO Hier Code schreiben, der die oben provozierte NonUniqueObjectException vermeidet
         t.commit();
 
     }
@@ -58,6 +60,7 @@ public class TestTeil4 extends DBTestCase {
     public void testProvokeLazyInitException() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
+        //TODO Hier Code schreiben, der eine LazyInitializationException provoziert
         t.commit();
     }
 
@@ -65,6 +68,7 @@ public class TestTeil4 extends DBTestCase {
     public void testReattach() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
+        //TODO Hier Code schreiben, der ein Reattachment eines Objekts im Zustand "Detached" durchführt
         t.commit();    
     }
     

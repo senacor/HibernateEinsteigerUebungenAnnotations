@@ -17,6 +17,7 @@ public class Foto implements Serializable {
     @Column(name="FOTO_PFAD")
     private String pfad;
 
+    //TODO Join Table einfügen
     @ManyToOne
     @JoinColumn(name="FOTO_PERS_ID", nullable = false)
     private Person owner;

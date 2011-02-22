@@ -5,6 +5,7 @@ import java.util.Set;
 
 /*
 TODO: Diese Klasse mit allen Attributen und Referenzen als Entität mappen
+TODO: Bidirektionale Relation beachten (Methode addFoto(Foto f)
  */
 public class Person {
     private long id;
