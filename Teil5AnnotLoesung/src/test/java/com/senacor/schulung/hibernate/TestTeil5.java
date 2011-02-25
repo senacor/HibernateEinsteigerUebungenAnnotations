@@ -74,7 +74,7 @@ public class TestTeil5 extends DBTestCase {
             .setProjection(Projections.projectionList()
                 .add(Projections.groupProperty("adresse.stadt"))
                 .add(Projections.count("id")));
-        for(Object o : q.list()) {
+        for(Object o : c.list()) {
             Object[] arr = (Object[])o;
             System.out.println(arr[0] + " - " + arr[1]);
         }
