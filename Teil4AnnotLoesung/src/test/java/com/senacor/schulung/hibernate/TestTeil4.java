@@ -89,8 +89,10 @@ public class TestTeil4 extends DBTestCase {
     public void testSpielwiese() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
-        Foto f = new Foto();
-        s.save(f);
+        Person p = (Person)s.load(Person.class, 213423423L);
+
+        p.getNachname();
+        
         t.commit();
     }
     
