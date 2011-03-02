@@ -23,21 +23,21 @@
         <module>Teil5AnnotLoesung</module>
     </modules>
 
-	<repositories>
-	    <repository>
-	      <id>jboss-public-repository-group</id>
-	      <name>JBoss Public Repository Group</name>
-	      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-	      <layout>default</layout>
-	      <releases>
-	        <enabled>true</enabled>
-	        <updatePolicy>never</updatePolicy>
-	      </releases>
-	      <snapshots>
-	        <enabled>true</enabled>
-	        <updatePolicy>never</updatePolicy>
-	      </snapshots>
-	    </repository>
+    <repositories>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>
     <dependencies>
 
@@ -70,7 +70,7 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.6.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -78,12 +78,12 @@
         </dependency>
 
         <dependency>
-			<groupId>org.dbunit</groupId>
-			<artifactId>dbunit</artifactId>
-			<version>2.4.8</version>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.4.8</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <resources>
             <resource>
@@ -123,7 +123,25 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <componentProperties>
+                        <outputfilename>schema.sql</outputfilename>
+                    </componentProperties>
+
+                </configuration>
+                <dependencies>
+                <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>    
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
-    
 </project>
