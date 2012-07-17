@@ -8,16 +8,18 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.Persistence;
+
 /**
  * Created by IntelliJ IDEA.
  * Person: mploed
  */
 public class Test extends TestCase{
     @org.junit.Test
-    public void testHibernate() {
-        // Session Factory initialisieren
+    public void testJPA() {
+        // EntityManagerFactory mit Name "test" initialisieren
 
-        // Session holen
+        // EntityManager holen
 
         // Transaktion starten
         

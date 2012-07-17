@@ -1,1 +1,1 @@
-java -cp hsqldb-1.8.0.10.jar org.hsqldb.util.DatabaseManager
+java -cp hsqldb-2.2.6.jar org.hsqldb.util.DatabaseManager
