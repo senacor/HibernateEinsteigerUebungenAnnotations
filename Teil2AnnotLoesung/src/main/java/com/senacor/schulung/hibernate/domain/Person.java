@@ -1,6 +1,5 @@
 package com.senacor.schulung.hibernate.domain;
 
-import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -36,8 +35,7 @@ public class Person {
       })
     private Adresse adresse;
 
-    @OneToMany(mappedBy = "owner")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Foto> fotos = new HashSet<Foto>();
 
     public void addFoto(Foto f) {

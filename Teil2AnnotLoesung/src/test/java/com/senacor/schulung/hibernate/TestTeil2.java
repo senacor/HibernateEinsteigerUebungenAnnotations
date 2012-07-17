@@ -9,13 +9,15 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class TestTeil2 {
     @org.junit.Test
-    public void testHibernate() {
-        SessionFactory sf = new Configuration()
-                .configure().buildSessionFactory();
-        Session s = sf.getCurrentSession();
-
+    public void testJPA() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         Person p = new Person();
         p.setNachname("Hammer");
         p.setVorname("Sepp");
@@ -37,9 +39,9 @@ public class TestTeil2 {
         foto2.setPfad("/my/path/img2.jpg");
         p.addFoto(foto2);
 
-        Transaction t = s.beginTransaction();
-        s.saveOrUpdate(p);
+        entityManager.getTransaction().begin();
+        entityManager.persist(p);
+        entityManager.getTransaction().commit();
 
-        t.commit();
     }
 }
