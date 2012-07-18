@@ -35,8 +35,7 @@ public class Person {
       })
     private Adresse adresse;
 
-    @OneToMany(mappedBy = "owner")
-    @Cascade(CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = javax.persistence.CascadeType.ALL)
     private Set<Foto> fotos = new HashSet<Foto>();
 
     public long getId() {
