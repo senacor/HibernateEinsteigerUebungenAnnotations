@@ -7,21 +7,9 @@
             Persistence unit for the JPA class
         </description>
 
-        <class>com.senacor.schulung.hibernate.com.senacor.schulung.hibernate.domain.Person</class>
-        <class>com.senacor.schulung.hibernate.com.senacor.schulung.hibernate.domain.Foto</class>
+        <class>com.senacor.schulung.hibernate.domain.Person</class>
+        <class>com.senacor.schulung.hibernate.domain.Foto</class>
 
-
-        <class>com.senacor.schulung.hibernate.domain.ZahlungsartConcreteClass</class>
-        <class>com.senacor.schulung.hibernate.domain.LastschriftConcreteClass</class>
-        <class>com.senacor.schulung.hibernate.domain.KreditkarteConcreteClass</class>
-
-        <class>com.senacor.schulung.hibernate.domain.ZahlungsartClassHierarchy</class>
-        <class>com.senacor.schulung.hibernate.domain.LastschriftClassHierarchy</class>
-        <class>com.senacor.schulung.hibernate.domain.KreditkarteClassHierarchy</class>
-
-        <class>com.senacor.schulung.hibernate.domain.ZahlungsartJoinedSubclass</class>
-        <class>com.senacor.schulung.hibernate.domain.LastschriftJoinedSubclass</class>
-        <class>com.senacor.schulung.hibernate.domain.KreditkarteJoinedSubclass</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/testdb" />
