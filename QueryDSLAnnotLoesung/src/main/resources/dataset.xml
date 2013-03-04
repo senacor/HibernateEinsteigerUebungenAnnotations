@@ -1,0 +1,111 @@
+<dataset>
+    <PERSONEN   PERS_ID = "100"
+                PERS_VORNAME="Michael"
+                PERS_NACHNAME="Plöd"
+                PERS_USERNAME="mploed"
+                PERS_ADR_STRASSE="Teststr. 1"
+                PERS_ADR_PLZ="99999"
+                PERS_ADR_STADT="Teststadt" />
+    <PERSONEN   PERS_ID = "102"
+                PERS_VORNAME="Agnes"
+                PERS_NACHNAME="Testin"
+                PERS_USERNAME="atestin"
+                PERS_ADR_STRASSE="dbuntstr. 1"
+                PERS_ADR_PLZ="60486"
+                PERS_ADR_STADT="Frankfurt" />
+    <PERSONEN   PERS_ID = "103"
+                PERS_VORNAME="Hans"
+                PERS_NACHNAME="Huper"
+                PERS_USERNAME="hhuper"
+                PERS_ADR_STRASSE="Teststr. 4"
+                PERS_ADR_PLZ="90409"
+                PERS_ADR_STADT="Nürnberg" />
+    <PERSONEN   PERS_ID = "104"
+                PERS_VORNAME="Sandra"
+                PERS_NACHNAME="Samson"
+                PERS_USERNAME="samas"
+                PERS_ADR_STRASSE="Bürgerstr. 33"
+                PERS_ADR_PLZ="93049"
+                PERS_ADR_STADT="Regensburg" />
+    <PERSONEN   PERS_ID = "105"
+                PERS_VORNAME="Stefan"
+                PERS_NACHNAME="Hartl"
+                PERS_USERNAME="shartl"
+                PERS_ADR_STRASSE="Maximilianstr. 34"
+                PERS_ADR_PLZ="80312"
+                PERS_ADR_STADT="München" />
+    <PERSONEN   PERS_ID = "106"
+                PERS_VORNAME="Katharina"
+                PERS_NACHNAME="Hermel"
+                PERS_USERNAME="kherm"
+                PERS_ADR_STRASSE="Wiesenstr. 1"
+                PERS_ADR_PLZ="90547"
+                PERS_ADR_STADT="Röthenbach" />
+    <PERSONEN   PERS_ID = "107"
+                PERS_VORNAME="Hannes"
+                PERS_NACHNAME="Gradl"
+                PERS_USERNAME="hgradl"
+                PERS_ADR_STRASSE="Rosenstr. 23"
+                PERS_ADR_PLZ="90409"
+                PERS_ADR_STADT="Nürnberg" />
+
+    <FOTOS      FOTO_ID="100"
+                FOTO_TITEL="Urlaub 1"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+
+    <FOTOS      FOTO_ID="102"
+                FOTO_TITEL="Urlaub 2"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+
+    <FOTOS      FOTO_ID="103"
+                FOTO_TITEL="Urlaub 3"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+
+    <FOTOS      FOTO_ID="104"
+                FOTO_TITEL="Urlaub 4"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+
+    <FOTOS      FOTO_ID="105"
+                FOTO_TITEL="Urlaub 5"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+
+    <FOTOS      FOTO_ID="106"
+                FOTO_TITEL="Urlaub 6"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+
+    <FOTOS      FOTO_ID="107"
+                FOTO_TITEL="Urlaub 1"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="104"/>
+
+    <FOTOS      FOTO_ID="108"
+                FOTO_TITEL="Urlaub 2"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="104"/>
+
+    <FOTOS      FOTO_ID="109"
+                FOTO_TITEL="Urlaub 3"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="102"/>
+
+    <FOTOS      FOTO_ID="1010"
+                FOTO_TITEL="Urlaub 4"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="106"/>
+
+    <FOTOS      FOTO_ID="1011"
+                FOTO_TITEL="Urlaub 5"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="107"/>
+
+    <FOTOS      FOTO_ID="1012"
+                FOTO_TITEL="Urlaub 6"
+                FOTO_PFAD="/pic1.jpg"
+                FOTO_PERS_ID="100"/>
+</dataset>
