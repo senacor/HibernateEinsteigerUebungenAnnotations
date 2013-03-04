@@ -1,4 +1,4 @@
-Übungsprojekt für den Einsatz von Hibernate mit Annotations
+Übungsprojekt für den Einsatz von Hibernate / JPA mit Annotations
 
 Ordner Datenbank enthält HSQLDB mit Kommandos zum starten (start.bat/sh), löschen (clean.bat/sh)
 und zum Starten des HSQLDB Managers (manager.bat)
