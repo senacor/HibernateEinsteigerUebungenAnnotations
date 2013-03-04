@@ -7,8 +7,8 @@
             Persistence unit for the JPA class
         </description>
 
-        <class>com.senacor.schulung.hibernate.com.senacor.schulung.hibernate.domain.Person</class>
-        <class>com.senacor.schulung.hibernate.com.senacor.schulung.hibernate.domain.Foto</class>
+        <class>com.senacor.schulung.hibernate.domain.Person</class>
+        <class>com.senacor.schulung.hibernate.domain.Foto</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
