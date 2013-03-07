@@ -2,22 +2,19 @@ package com.senacor.schulung.hibernate;
 
 import com.senacor.schulung.hibernate.domain.*;
 import junit.framework.TestCase;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.Date;
 
 public class TestTeil3 extends TestCase {
-    private SessionFactory sf = new Configuration()
-                .configure().buildSessionFactory();
+    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
 
     @org.junit.Test
     public void testPersonFoto() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
-
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
 
         System.out.println(
                 "##################\n" +
@@ -44,19 +41,19 @@ public class TestTeil3 extends TestCase {
         foto2.setPfad("/my/path/img2.jpg");
         p.addFoto(foto2);
 
-        s.saveOrUpdate(p);
-        assertTrue("Person wurde nicht gespeichert", s.contains(p));
-        assertTrue("Wahrscheinlich feht ein cascade=all auf Person#fotos oder die Collection ist nicht gemappt", s.contains(foto1));
-        assertTrue("Wahrscheinlich feht ein cascade=all auf Person#fotos oder die Collection ist nicht gemappt",s.contains(foto2));
-        t.commit();
+        entityManager.persist(p);
+        assertTrue("Person wurde nicht gespeichert", entityManager.contains(p));
+        assertTrue("Wahrscheinlich feht ein cascade=all auf Person#fotos oder die Collection ist nicht gemappt", entityManager.contains(foto1));
+        assertTrue("Wahrscheinlich feht ein cascade=all auf Person#fotos oder die Collection ist nicht gemappt",entityManager.contains(foto2));
+        entityManager.getTransaction().commit();
 
     }
 
 
     @org.junit.Test
     public void testConcreteClass() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
 
         System.out.println(
                 "\n##################\n" +
@@ -68,22 +65,22 @@ public class TestTeil3 extends TestCase {
         lastCC.setBank("Test Bank");
         lastCC.setBlz("1234");
         lastCC.setKontoNummer("1234");
-        s.save(lastCC);
+        entityManager.persist(lastCC);
 
         KreditkarteConcreteClass creditCC = new KreditkarteConcreteClass();
         creditCC.setEigentuemer("Sepp");
         creditCC.setGueltigBis(new Date());
         creditCC.setNummer("12344232");
-        s.save(creditCC);
-        assertTrue(s.contains(creditCC));
-        assertTrue(s.contains(lastCC));
-        t.commit();
+        entityManager.persist(creditCC);
+        assertTrue(entityManager.contains(creditCC));
+        assertTrue(entityManager.contains(lastCC));
+        entityManager.getTransaction().commit();
     }
 
     @org.junit.Test
     public void testClassHierarchy() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
 
 
         System.out.println(
@@ -96,22 +93,22 @@ public class TestTeil3 extends TestCase {
         lastCH.setBank("Test Bank");
         lastCH.setBlz("1234");
         lastCH.setKontoNummer("1234");
-        s.save(lastCH);
+        entityManager.persist(lastCH);
 
         KreditkarteClassHierarchy creditCH = new KreditkarteClassHierarchy();
         creditCH.setEigentuemer("Sepp");
         creditCH.setGueltigBis(new Date());
         creditCH.setNummer("12344232");
-        s.save(creditCH);
-        assertTrue(s.contains(creditCH));
-        assertTrue(s.contains(lastCH));
-        t.commit();
+        entityManager.persist(creditCH);
+        assertTrue(entityManager.contains(creditCH));
+        assertTrue(entityManager.contains(lastCH));
+        entityManager.getTransaction().commit();
     }
 
     @org.junit.Test
     public void testJoinedSubclass() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
 
         System.out.println(
                 "\n##################\n" +
@@ -123,15 +120,15 @@ public class TestTeil3 extends TestCase {
         lastJS.setBank("Test Bank");
         lastJS.setBlz("1234");
         lastJS.setKontoNummer("1234");
-        s.save(lastJS);
+        entityManager.persist(lastJS);
 
         KreditkarteJoinedSubclass creditJS = new KreditkarteJoinedSubclass();
         creditJS.setEigentuemer("Sepp");
         creditJS.setGueltigBis(new Date());
         creditJS.setNummer("12344232");
-        s.save(creditJS);
-        assertTrue(s.contains(creditJS));
-        assertTrue(s.contains(lastJS));
-        t.commit();
+        entityManager.persist(creditJS);
+        assertTrue(entityManager.contains(creditJS));
+        assertTrue(entityManager.contains(lastJS));
+        entityManager.getTransaction().commit();
     }
 }

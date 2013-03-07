@@ -7,27 +7,31 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class Test {
     @org.junit.Test
-    public void testHibernate() {
-        //Session Factory initialisieren
-        SessionFactory sf = new Configuration()
-                .configure().buildSessionFactory();
+    public void testJPA() {
 
-        //Session holen
-        Session s = sf.getCurrentSession();
-        
+        //EntityManagerFactory mit Name "test" initialisieren
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "test" );
+
+        //EntityManager holen
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
         Person p = new Person();
         p.setVorname("Sepp");
         p.setNachname("Hammer");
 
         //Transaktion starten
-        Transaction t = s.beginTransaction();
+        entityManager.getTransaction().begin();
 
         //Speichern
-        s.saveOrUpdate(p);
+        entityManager.persist(p);
 
         //Transaktion Commit
-        t.commit();
+        entityManager.getTransaction().commit();
     }
 }

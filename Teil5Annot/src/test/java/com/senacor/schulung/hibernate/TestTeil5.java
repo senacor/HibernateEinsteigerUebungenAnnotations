@@ -16,18 +16,20 @@ import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Projections;
 import org.hibernate.transform.ResultTransformer;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 
 public class TestTeil5 extends DBTestCase {
 
-    private SessionFactory sf = null;
+    private EntityManagerFactory entityManagerFactory = null;
 
     public TestTeil5() {
         super();
-        sf = new Configuration()
-                .configure().buildSessionFactory();
+        entityManagerFactory = Persistence.createEntityManagerFactory("test");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, "org.hsqldb.jdbcDriver");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, "jdbc:hsqldb:hsql://localhost/testdb");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, "sa");
@@ -40,18 +42,24 @@ public class TestTeil5 extends DBTestCase {
 
     @org.junit.Test
     public void testInnerJoin() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
-        //TODO hier eine HQL und eine Criteria Query schreiben, die nur Benutzer mit Fotos ausgibt (Tip: Inner Join)
-        t.commit();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        //TODO hier eine JPQL Query schreiben, die nur Benutzer mit Fotos ausgibt (Tip: Inner Join)
+
+        Session session = (Session)entityManager.getDelegate();
+        //TODO hier eine HibernateCriteria Query schreiben, die nur Benutzer mit Fotos ausgibt (Tip: Inner Join)
+        entityManager.getTransaction().commit();
     }
 
     @org.junit.Test
     public void testGroupBy() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
-        //TODO hier eine HQL und eine Criteria Query schreiben, die zählt in welchen Städten wie viele Benutzer wohnen
-        t.commit();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        //TODO hier eine JPQL Query schreiben, die zählt in welchen Städten wie viele Benutzer wohnen
+
+        Session session = (Session)entityManager.getDelegate();
+        //TODO hier eine Hibernate Criteria Query schreiben, die zählt in welchen Städten wie viele Benutzer wohnen
+        entityManager.getTransaction().commit();
     }
 
 }

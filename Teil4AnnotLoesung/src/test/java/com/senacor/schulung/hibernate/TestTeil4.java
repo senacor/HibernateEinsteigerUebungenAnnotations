@@ -6,19 +6,23 @@ import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.LazyInitializationException;
+import org.hibernate.NonUniqueObjectException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.Set;
 
 public class TestTeil4 extends DBTestCase {
 
-    private SessionFactory sf = null;
+    private EntityManagerFactory entityManagerFactory = null;
 
     public TestTeil4() {
         super();
-        sf = new Configuration()
-                .configure().buildSessionFactory();
+        entityManagerFactory = Persistence.createEntityManagerFactory("test");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, "org.hsqldb.jdbcDriver");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, "jdbc:hsqldb:hsql://localhost/testdb");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, "sa");
@@ -32,7 +36,7 @@ public class TestTeil4 extends DBTestCase {
     @org.junit.Test
     public void testProvokeNonUniqueObjectException() {
         try {
-            Session s = sf.getCurrentSession();
+            Session s = (Session)entityManagerFactory.createEntityManager().getDelegate();
             Transaction t = s.beginTransaction();
             Person p = (Person)s.get(Person.class, 100L);
             Person p2 = new Person();
@@ -48,7 +52,7 @@ public class TestTeil4 extends DBTestCase {
 
     @org.junit.Test
     public void testAvoidNonUniqueObjectException() {
-        Session s = sf.getCurrentSession();
+        Session s = (Session)entityManagerFactory.createEntityManager().getDelegate();
         Transaction t = s.beginTransaction();
         Person p = (Person)s.get(Person.class, 100L);
         Person p2 = new Person();
@@ -61,10 +65,11 @@ public class TestTeil4 extends DBTestCase {
     @org.junit.Test
     public void testProvokeLazyInitException() {
         try {
-            Session s = sf.getCurrentSession();
-            Transaction t = s.beginTransaction();
-            Person p = (Person)s.get(Person.class, 100L);
-            t.commit();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            Person p = entityManager.find(Person.class, 100L);
+            entityManager.getTransaction().commit();
+            entityManager.close();
             p.getFotos().iterator();
             org.junit.Assert.fail("No Exception");
         } catch(LazyInitializationException e) {
@@ -74,26 +79,25 @@ public class TestTeil4 extends DBTestCase {
 
     @org.junit.Test
     public void testReattach() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
-        Person p = (Person)s.get(Person.class, 100L);
-        t.commit();
-        s = sf.openSession();
-        t = s.beginTransaction();
-        s.saveOrUpdate(p);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Person p = entityManager.find(Person.class, 100L);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        p = entityManager.merge(p);
         p.getFotos().iterator();
-        t.commit();    
+        entityManager.getTransaction().commit();
     }
 
     @org.junit.Test
     public void testSpielwiese() {
-        Session s = sf.getCurrentSession();
-        Transaction t = s.beginTransaction();
-        Person p = (Person)s.load(Person.class, 213423423L);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
 
-        p.getNachname();
-        
-        t.commit();
+
+        entityManager.getTransaction().commit();
     }
     
 }
