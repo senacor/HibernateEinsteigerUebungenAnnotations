@@ -5,6 +5,7 @@
                 PERS_USERNAME="mploed"
                 PERS_ADR_STRASSE="Teststr. 1"
                 PERS_ADR_PLZ="99999"
+                VERSION="1"
                 PERS_ADR_STADT="Teststadt"/>
     <PERSONEN   PERS_ID = "102"
                 PERS_VORNAME="Agnes"
@@ -12,6 +13,7 @@
                 PERS_USERNAME="atestin"
                 PERS_ADR_STRASSE="dbuntstr. 1"
                 PERS_ADR_PLZ="60486"
+                VERSION="1"
                 PERS_ADR_STADT="Frankfurt" />
     <PERSONEN   PERS_ID = "103"
                 PERS_VORNAME="Hans"
@@ -19,6 +21,7 @@
                 PERS_USERNAME="hhuper"
                 PERS_ADR_STRASSE="Teststr. 4"
                 PERS_ADR_PLZ="90409"
+                VERSION="1"
                 PERS_ADR_STADT="Nürnberg" />
     <PERSONEN   PERS_ID = "104"
                 PERS_VORNAME="Sandra"
@@ -26,11 +29,13 @@
                 PERS_USERNAME="samas"
                 PERS_ADR_STRASSE="Bürgerstr. 33"
                 PERS_ADR_PLZ="93049"
+                VERSION="1"
                 PERS_ADR_STADT="Regensburg" />
     <PERSONEN   PERS_ID = "105"
                 PERS_VORNAME="Stefan"
                 PERS_NACHNAME="Hartl"
                 PERS_USERNAME="shartl"
+                VERSION="1"
                 PERS_ADR_STRASSE="Maximilianstr. 34"
                 PERS_ADR_PLZ="80312"
                 PERS_ADR_STADT="München" />
@@ -40,6 +45,7 @@
                 PERS_USERNAME="kherm"
                 PERS_ADR_STRASSE="Wiesenstr. 1"
                 PERS_ADR_PLZ="90547"
+                VERSION="1"
                 PERS_ADR_STADT="Röthenbach" />
     <PERSONEN   PERS_ID = "107"
                 PERS_VORNAME="Hannes"
@@ -47,6 +53,7 @@
                 PERS_USERNAME="hgradl"
                 PERS_ADR_STRASSE="Rosenstr. 23"
                 PERS_ADR_PLZ="90409"
+                VERSION="1"
                 PERS_ADR_STADT="Nürnberg" />
 
     <FOTOS      FOTO_ID="100"

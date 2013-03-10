@@ -7,9 +7,10 @@ import java.util.Set;
 
 @Entity
 @Table(name="PERSONEN")
+@SequenceGenerator(name = "SEQ_GEN")
 public class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="PERS_ID")
     private long id;
 
@@ -36,6 +37,8 @@ public class Person {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Foto> fotos = new HashSet<Foto>();
 
+    private long version;
+
     public long getId() {
         return id;
     }
@@ -50,6 +53,14 @@ public class Person {
 
     public void setVorname(String vorname) {
         this.vorname = vorname;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
     }
 
     public String getNachname() {

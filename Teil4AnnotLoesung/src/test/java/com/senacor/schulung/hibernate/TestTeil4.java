@@ -1,15 +1,13 @@
 package com.senacor.schulung.hibernate;
 
+import com.senacor.schulung.hibernate.domain.Adresse;
 import com.senacor.schulung.hibernate.domain.Foto;
 import com.senacor.schulung.hibernate.domain.Person;
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.hibernate.LazyInitializationException;
-import org.hibernate.NonUniqueObjectException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,25 +34,25 @@ public class TestTeil4 extends DBTestCase {
     @org.junit.Test
     public void testProvokeNonUniqueObjectException() {
         try {
-            Session s = (Session)entityManagerFactory.createEntityManager().getDelegate();
+            Session s = (Session) entityManagerFactory.createEntityManager().getDelegate();
             Transaction t = s.beginTransaction();
-            Person p = (Person)s.get(Person.class, 100L);
+            Person p = (Person) s.get(Person.class, 100L);
             Person p2 = new Person();
             p2.setId(100L);
             s.saveOrUpdate(p2);
             org.junit.Assert.fail("No Exception");
             t.commit();
-        } catch(NonUniqueObjectException e) {
+        } catch (NonUniqueObjectException e) {
 
         }
-        
+
     }
 
     @org.junit.Test
     public void testAvoidNonUniqueObjectException() {
-        Session s = (Session)entityManagerFactory.createEntityManager().getDelegate();
+        Session s = (Session) entityManagerFactory.createEntityManager().getDelegate();
         Transaction t = s.beginTransaction();
-        Person p = (Person)s.get(Person.class, 100L);
+        Person p = (Person) s.get(Person.class, 100L);
         Person p2 = new Person();
         p2.setId(100L);
         s.merge(p2);
@@ -72,8 +70,8 @@ public class TestTeil4 extends DBTestCase {
             entityManager.close();
             p.getFotos().iterator();
             org.junit.Assert.fail("No Exception");
-        } catch(LazyInitializationException e) {
-            
+        } catch (LazyInitializationException e) {
+
         }
     }
 
@@ -94,10 +92,41 @@ public class TestTeil4 extends DBTestCase {
     @org.junit.Test
     public void testSpielwiese() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        ((Session) entityManager.getDelegate()).setFlushMode(FlushMode.MANUAL);
         entityManager.getTransaction().begin();
-
-
+        Person p = new Person();
+        //^transient
+        p.setNachname("Plöd");
+        p.setVorname("Michael");
+        p.setUsername("PloedM");
+        Adresse a = new Adresse();
+        a.setPlz("23434");
+        a.setStadt("Teststadt");
+        a.setStrasse("Teststr. 34");
+        p.setAdresse(a);
+        entityManager.persist(p);
+        //^persistent
         entityManager.getTransaction().commit();
+        entityManager.close();
+        //^detached
+        p.setId(0);
+
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+        entityManager2.getTransaction().begin();
+        Session session = (Session) entityManager2.getDelegate();
+
+        p.setUsername("test");
+        session.saveOrUpdate(p);
+        entityManager2.getTransaction().commit();
     }
-    
+
+    @org.junit.Test
+    public void testGetAndLoad() {
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+        entityManager2.getTransaction().begin();
+        Session session = (Session) entityManager2.getDelegate();
+        Person p = (Person)session.get(Person.class, 105L);
+        entityManager2.getTransaction().commit();
+    }
+
 }
